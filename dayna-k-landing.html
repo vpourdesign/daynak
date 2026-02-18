@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dayna K — Courtier Immobilier | RE/MAX Crystal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #F5F0EA;
+      --warm:    #E8DDD0;
+      --sand:    #C89B7B;
+      --brown:   #6B4A38;
+      --dark:    #121110;
+      --white:   #FFFFFF;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--dark);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 60px;
+      background: rgba(245,240,234,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      transition: padding 0.3s;
+    }
+    .nav-logo img { height: 34px; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 400;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--dark); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sand); }
+    .nav-cta {
+      background: var(--dark); color: var(--white);
+      padding: 11px 26px; border: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--sand); }
+
+    /* ─── HERO ────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 60px 80px 80px;
+      animation: fadeUp 0.9s ease both;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--sand);
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(52px, 6vw, 88px);
+      font-weight: 300; line-height: 1.05;
+      color: var(--dark);
+      margin-bottom: 28px;
+    }
+    .hero-title em { font-style: italic; color: var(--brown); }
+    .hero-sub {
+      font-size: 15px; font-weight: 300; line-height: 1.75;
+      color: #555; max-width: 420px; margin-bottom: 48px;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--dark); color: var(--white);
+      padding: 16px 36px; border: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--brown); }
+    .btn-outline {
+      background: transparent; color: var(--dark);
+      padding: 15px 36px;
+      border: 1px solid var(--dark); cursor: pointer;
+      font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--dark); color: var(--white); }
+
+    .hero-image {
+      position: relative; overflow: hidden;
+      background: var(--warm);
+    }
+    .hero-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center top;
+      animation: scaleIn 1.2s ease both;
+    }
+    .hero-image-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(245,240,234,0.15), transparent);
+    }
+
+    /* ─── INTRO / ABOUT ───────────────────────────────────────────── */
+    .intro {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; background: var(--dark); color: var(--white);
+    }
+    .intro-text {
+      padding: 100px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .section-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--sand);
+      margin-bottom: 20px;
+    }
+    .intro-title {
+      font-family: var(--font-serif); font-size: clamp(36px, 3.5vw, 52px);
+      font-weight: 300; line-height: 1.15; margin-bottom: 28px;
+    }
+    .intro-title em { font-style: italic; }
+    .intro-body {
+      font-size: 15px; font-weight: 300; line-height: 1.8;
+      color: rgba(255,255,255,0.72); margin-bottom: 40px; max-width: 480px;
+    }
+    .btn-sand {
+      display: inline-block;
+      background: var(--sand); color: var(--white);
+      padding: 16px 36px;
+      font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .btn-sand:hover { background: var(--brown); }
+
+    .intro-image {
+      position: relative; overflow: hidden; min-height: 520px;
+    }
+    .intro-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center 20%;
+    }
+
+    /* ─── STATS ───────────────────────────────────────────────────── */
+    .stats {
+      background: var(--cream);
+      padding: 80px 80px;
+      display: flex; justify-content: center; align-items: center; gap: 0;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .stat-item {
+      flex: 1; text-align: center;
+      padding: 40px 48px;
+      position: relative;
+    }
+    .stat-item:not(:last-child)::after {
+      content: ''; position: absolute; right: 0; top: 25%; height: 50%;
+      width: 1px; background: rgba(0,0,0,0.1);
+    }
+    .stat-number {
+      font-family: var(--font-serif); font-size: 64px; font-weight: 300;
+      color: var(--dark); line-height: 1;
+      margin-bottom: 12px;
+    }
+    .stat-number span { color: var(--sand); }
+    .stat-label {
+      font-size: 12px; font-weight: 400; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #888;
+    }
+
+    /* ─── SERVICES SLIDER ─────────────────────────────────────────── */
+    .services { padding: 120px 0; background: var(--cream); }
+    .services-header {
+      text-align: center; padding: 0 80px; margin-bottom: 64px;
+    }
+    .section-title {
+      font-family: var(--font-serif); font-size: clamp(38px, 4vw, 60px);
+      font-weight: 300; line-height: 1.1; margin-bottom: 16px;
+    }
+    .section-title em { font-style: italic; color: var(--brown); }
+    .section-sub {
+      font-size: 15px; color: #666; max-width: 500px; margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .cards-track {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      padding: 0 2px;
+    }
+    .service-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 3/4; cursor: pointer;
+      background: var(--warm);
+    }
+    .service-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+      filter: brightness(0.75);
+    }
+    .service-card:hover img { transform: scale(1.05); }
+    .service-card-content {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 40px 36px;
+      background: linear-gradient(to top, rgba(10,8,7,0.72) 0%, transparent 60%);
+      color: var(--white);
+    }
+    .card-num {
+      font-family: var(--font-serif); font-size: 13px; font-weight: 300;
+      opacity: 0.5; margin-bottom: 10px; letter-spacing: 0.1em;
+    }
+    .card-title {
+      font-family: var(--font-serif); font-size: 26px; font-weight: 300;
+      line-height: 1.2; margin-bottom: 12px;
+    }
+    .card-desc {
+      font-size: 13px; line-height: 1.7; opacity: 0.8;
+      max-width: 280px; margin-bottom: 24px;
+    }
+    .card-link {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--sand); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: gap 0.2s;
+    }
+    .card-link:hover { gap: 14px; }
+    .card-link::after { content: '→'; }
+
+    /* ─── APPROACH ────────────────────────────────────────────────── */
+    .approach {
+      background: var(--warm); padding: 120px 80px;
+    }
+    .approach-header { text-align: center; margin-bottom: 80px; }
+    .approach-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 60px;
+    }
+    .approach-item {}
+    .approach-icon {
+      width: 48px; height: 2px; background: var(--sand);
+      margin-bottom: 28px;
+    }
+    .approach-title {
+      font-family: var(--font-serif); font-size: 26px; font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .approach-text { font-size: 14px; line-height: 1.8; color: #555; }
+
+    /* ─── TESTIMONIALS ────────────────────────────────────────────── */
+    .testimonials {
+      background: var(--dark); color: var(--white);
+      padding: 120px 80px;
+    }
+    .testimonials-header { text-align: center; margin-bottom: 72px; }
+    .testimonials-header .section-title { color: var(--white); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 40px 36px;
+    }
+    .quote-mark {
+      font-family: var(--font-serif); font-size: 60px; font-weight: 300;
+      color: var(--sand); line-height: 0.5; margin-bottom: 24px;
+      display: block;
+    }
+    .testimonial-text {
+      font-size: 14px; line-height: 1.85; color: rgba(255,255,255,0.72);
+      margin-bottom: 28px; font-style: italic;
+    }
+    .testimonial-name {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--sand);
+    }
+
+    /* ─── SECTEURS ────────────────────────────────────────────────── */
+    .secteurs { padding: 120px 80px; background: var(--cream); }
+    .secteurs-header { text-align: center; margin-bottom: 64px; }
+    .secteurs-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .secteur-card {
+      background: var(--dark); color: var(--white);
+      padding: 56px 48px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      min-height: 240px;
+      position: relative; overflow: hidden;
+      transition: background 0.3s;
+    }
+    .secteur-card:hover { background: var(--brown); }
+    .secteur-num {
+      font-family: var(--font-serif); font-size: 80px; font-weight: 300;
+      color: rgba(255,255,255,0.06); position: absolute;
+      top: 16px; right: 32px; line-height: 1;
+    }
+    .secteur-title {
+      font-family: var(--font-serif); font-size: 32px; font-weight: 300;
+      margin-bottom: 12px;
+    }
+    .secteur-desc { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+    .secteur-link {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--sand); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 32px; transition: gap 0.2s;
+    }
+    .secteur-link:hover { gap: 14px; }
+    .secteur-link::after { content: '→'; }
+
+    /* ─── CTA BAND ────────────────────────────────────────────────── */
+    .cta-band {
+      background: var(--sand); color: var(--white);
+      padding: 80px; text-align: center;
+    }
+    .cta-band h2 {
+      font-family: var(--font-serif); font-size: clamp(36px, 4vw, 56px);
+      font-weight: 300; margin-bottom: 16px;
+    }
+    .cta-band h2 em { font-style: italic; }
+    .cta-band p { font-size: 15px; opacity: 0.85; margin-bottom: 44px; }
+    .btn-white {
+      background: var(--white); color: var(--sand);
+      padding: 18px 48px;
+      font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-white:hover { background: var(--dark); color: var(--white); }
+
+    /* ─── CONTACT ─────────────────────────────────────────────────── */
+    .contact {
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--cream);
+    }
+    .contact-info {
+      padding: 100px 80px;
+      background: var(--dark); color: var(--white);
+    }
+    .contact-info .section-label { color: var(--sand); }
+    .contact-info .section-title { color: var(--white); margin-bottom: 36px; }
+    .contact-detail {
+      margin-bottom: 28px;
+    }
+    .contact-detail-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--sand); margin-bottom: 6px;
+    }
+    .contact-detail a, .contact-detail p {
+      font-size: 16px; color: rgba(255,255,255,0.8);
+      text-decoration: none; font-weight: 300;
+    }
+    .contact-detail a:hover { color: var(--sand); }
+
+    .contact-form { padding: 100px 80px; }
+    .contact-form .section-title { margin-bottom: 40px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #888; margin-bottom: 8px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 14px 16px;
+      border: 1px solid rgba(0,0,0,0.12); background: var(--white);
+      font-family: var(--font-sans); font-size: 14px; color: var(--dark);
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--sand);
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+
+    /* ─── FOOTER ──────────────────────────────────────────────────── */
+    footer {
+      background: var(--dark); color: rgba(255,255,255,0.5);
+      padding: 40px 80px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    footer img { height: 28px; opacity: 0.6; }
+    footer p { font-size: 12px; }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a {
+      font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--sand); }
+
+    /* ─── ANIMATIONS ──────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scaleIn {
+      from { transform: scale(1.06); }
+      to   { transform: scale(1); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 28px; }
+      .nav-links, .nav-cta { display: none; }
+      .hero, .intro, .contact { grid-template-columns: 1fr; }
+      .hero-image { min-height: 55vw; }
+      .hero-text { padding: 60px 28px; }
+      .stats { flex-direction: column; gap: 0; padding: 60px 28px; }
+      .stat-item::after { display: none; }
+      .cards-track { grid-template-columns: 1fr; }
+      .approach { padding: 80px 28px; }
+      .approach-grid { grid-template-columns: 1fr; gap: 40px; }
+      .testimonials { padding: 80px 28px; }
+      .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+      .secteurs { padding: 80px 28px; }
+      .secteurs-grid { grid-template-columns: 1fr; }
+      .cta-band { padding: 60px 28px; }
+      .contact-info, .contact-form { padding: 60px 28px; }
+      .intro-text { padding: 60px 28px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://static.wixstatic.com/media/623234_38d0a1ad40e8470493cc650fc46c9361~mv2.png" alt="Dayna K Logo" />
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#approche">Approche</a></li>
+    <li><a href="#secteurs">Secteurs</a></li>
+    <li><a href="#temoignages">Témoignages</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Me contacter</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Courtier Immobilier · RE/MAX Crystal</p>
+    <h1 class="hero-title">
+      Votre projet,<br>
+      <em>ma priorité.</em>
+    </h1>
+    <p class="hero-sub">
+      Une approche personnalisée, un service attentionné et une communication transparente à chaque étape de votre parcours immobilier.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Obtenir une évaluation</a>
+      <a href="#services" class="btn-outline">Découvrir mes services</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://static.wixstatic.com/media/623234_1bdd425925214241812fc0bd8bd16b71~mv2.jpg" alt="Dayna K — Courtier Immobilier" />
+    <div class="hero-image-overlay"></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="apropos">
+  <div class="intro-text reveal">
+    <p class="section-label">À propos de moi</p>
+    <h2 class="intro-title">De la <em>passion</em><br>à la profession</h2>
+    <p class="intro-body">
+      Je crois que chaque client mérite un service sur mesure, fondé sur l'écoute, l'intégrité et la communication. Que vous vendiez ou achetiez, je m'engage à vous guider avec franchise et expertise à chaque étape du processus.
+    </p>
+    <a href="#contact" class="btn-sand">Prendre rendez-vous</a>
+  </div>
+  <div class="intro-image">
+    <img src="https://static.wixstatic.com/media/623234_0a10aea7af0a4029918074537c4d3f6a~mv2.png" alt="Dayna K" />
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stat-item reveal">
+    <div class="stat-number">RE<span>/</span>MAX</div>
+    <div class="stat-label">Bannière de confiance</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number">100<span>%</span></div>
+    <div class="stat-label">Dédié à vos objectifs</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number">1<span>er</span></div>
+    <div class="stat-label">Appel toujours gratuit</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <p class="section-label" style="text-align:center">Ce que je fais</p>
+    <h2 class="section-title">Mes <em>services</em></h2>
+    <p class="section-sub">Un accompagnement complet, de la première visite jusqu'à la signature chez le notaire.</p>
+  </div>
+  <div class="cards-track">
+    <div class="service-card reveal">
+      <!-- Placeholder — remplacer par photo de maison à vendre -->
+      <div style="background: linear-gradient(135deg, #4a3328 0%, #8b5e4a 100%); width:100%; height:100%; position:absolute;"></div>
+      <div class="service-card-content">
+        <span class="card-num">01</span>
+        <h3 class="card-title">Vendre<br>votre propriété</h3>
+        <p class="card-desc">Une mise en marché stratégique pour maximiser la valeur de votre bien et accélérer la vente.</p>
+        <a href="#contact" class="card-link">En savoir plus</a>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div style="background: linear-gradient(135deg, #2a3828 0%, #4a6b5a 100%); width:100%; height:100%; position:absolute;"></div>
+      <div class="service-card-content">
+        <span class="card-num">02</span>
+        <h3 class="card-title">Acheter<br>votre propriété</h3>
+        <p class="card-desc">Je vous accompagne dans chaque étape de la recherche jusqu'à la signature, avec sérénité.</p>
+        <a href="#contact" class="card-link">En savoir plus</a>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div style="background: linear-gradient(135deg, #2a2838 0%, #4a4a6b 100%); width:100%; height:100%; position:absolute;"></div>
+      <div class="service-card-content">
+        <span class="card-num">03</span>
+        <h3 class="card-title">Évaluation<br>immobilière</h3>
+        <p class="card-desc">Obtenez une évaluation gratuite et précise de la valeur marchande de votre propriété.</p>
+        <a href="#contact" class="card-link">Demander une évaluation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach" id="approche">
+  <div class="approach-header reveal">
+    <p class="section-label" style="text-align:center">Mon approche</p>
+    <h2 class="section-title" style="text-align:center">Ce qui me <em>distingue</em></h2>
+  </div>
+  <div class="approach-grid">
+    <div class="approach-item reveal">
+      <div class="approach-icon"></div>
+      <h3 class="approach-title">Intégrité</h3>
+      <p class="approach-text">L'intégrité guide chacune de mes actions. Vous méritez une transparence totale et des conseils honnêtes, du premier contact jusqu'à la clé en main.</p>
+    </div>
+    <div class="approach-item reveal">
+      <div class="approach-icon"></div>
+      <h3 class="approach-title">Communication</h3>
+      <p class="approach-text">Joignable par téléphone ou courriel, je m'assure que vous êtes toujours informé et impliqué. Aucune question ne reste sans réponse.</p>
+    </div>
+    <div class="approach-item reveal">
+      <div class="approach-icon"></div>
+      <h3 class="approach-title">Unicité</h3>
+      <p class="approach-text">Votre situation est unique. Je personnalise chaque stratégie pour refléter vos besoins réels, non un modèle standardisé.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="temoignages">
+  <div class="testimonials-header reveal">
+    <p class="section-label" style="text-align:center; color:var(--sand)">Témoignages</p>
+    <h2 class="section-title" style="color:var(--white)">Ce que disent<br><em style="color:var(--sand)">mes clients</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">Dayna a su nous guider avec patience et professionnalisme. Son écoute et sa disponibilité ont fait toute la différence dans notre expérience d'achat.</p>
+      <p class="testimonial-name">— Prénom N.</p>
+    </div>
+    <div class="testimonial-card reveal">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">Très satisfaits de la vente de notre maison. Dayna était disponible, honnête et efficace. Nous recommandons ses services sans hésitation.</p>
+      <p class="testimonial-name">— Prénom N.</p>
+    </div>
+    <div class="testimonial-card reveal">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">Une courtière qui pense vraiment à vos intérêts. Son approche transparente nous a permis de prendre des décisions éclairées à chaque étape.</p>
+      <p class="testimonial-name">— Prénom N.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTEURS -->
+<section class="secteurs" id="secteurs">
+  <div class="secteurs-header reveal">
+    <p class="section-label" style="text-align:center">Où je travaille</p>
+    <h2 class="section-title" style="text-align:center">Mes <em>secteurs</em></h2>
+  </div>
+  <div class="secteurs-grid">
+    <div class="secteur-card reveal">
+      <span class="secteur-num">01</span>
+      <div>
+        <h3 class="secteur-title">Secteur A</h3>
+        <p class="secteur-desc">Indiquez ici vos secteurs desservis — quartiers, villes ou régions où vous êtes active.</p>
+      </div>
+      <a href="#contact" class="secteur-link">Explorer le secteur</a>
+    </div>
+    <div class="secteur-card reveal">
+      <span class="secteur-num">02</span>
+      <div>
+        <h3 class="secteur-title">Secteur B</h3>
+        <p class="secteur-desc">Chaque secteur a ses particularités. Je vous aide à en tirer le meilleur parti.</p>
+      </div>
+      <a href="#contact" class="secteur-link">Explorer le secteur</a>
+    </div>
+    <div class="secteur-card reveal">
+      <span class="secteur-num">03</span>
+      <div>
+        <h3 class="secteur-title">Secteur C</h3>
+        <p class="secteur-desc">Une expertise locale solide pour vous accompagner dans votre marché spécifique.</p>
+      </div>
+      <a href="#contact" class="secteur-link">Explorer le secteur</a>
+    </div>
+    <div class="secteur-card reveal">
+      <span class="secteur-num">04</span>
+      <div>
+        <h3 class="secteur-title">Secteur D</h3>
+        <p class="secteur-desc">Votre propriété idéale vous attend. Découvrez les opportunités de ce secteur avec moi.</p>
+      </div>
+      <a href="#contact" class="secteur-link">Explorer le secteur</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Prête à vous accompagner<br><em>dès aujourd'hui</em></h2>
+  <p>Une évaluation gratuite, un premier appel sans engagement. Commençons ensemble.</p>
+  <a href="#contact" class="btn-white">Obtenir une évaluation gratuite</a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <p class="section-label">Prenons contact</p>
+    <h2 class="section-title" style="color:var(--white); font-family:var(--font-serif); font-weight:300; font-size:42px; margin-bottom:36px;">
+      Parlons de<br><em>votre projet</em>
+    </h2>
+    <div class="contact-detail">
+      <p class="contact-detail-label">Téléphone</p>
+      <a href="tel:+15141234567" class="contact-detail">(514) 000-0000</a>
+    </div>
+    <div class="contact-detail">
+      <p class="contact-detail-label">Courriel</p>
+      <a href="mailto:dayna@remax.net" class="contact-detail">dayna@remax.net</a>
+    </div>
+    <div class="contact-detail">
+      <p class="contact-detail-label">Bureau</p>
+      <p class="contact-detail">RE/MAX Crystal<br>Adresse du bureau</p>
+    </div>
+    <div style="margin-top: 48px;">
+      <img src="https://static.wixstatic.com/media/623234_6395502c46a0448ea97d9111de1e7f3b~mv2.png" alt="RE/MAX Crystal" style="height:32px; opacity:0.7;" />
+    </div>
+  </div>
+  <div class="contact-form">
+    <h2 class="section-title" style="font-family:var(--font-serif); font-weight:300; font-size:40px; margin-bottom:40px;">
+      Nous <em style="color:var(--brown)">contacter</em>
+    </h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Prénom</label>
+        <input type="text" placeholder="Votre prénom" />
+      </div>
+      <div class="form-group">
+        <label>Nom</label>
+        <input type="text" placeholder="Votre nom" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Courriel</label>
+        <input type="email" placeholder="votre@courriel.com" />
+      </div>
+      <div class="form-group">
+        <label>Téléphone</label>
+        <input type="tel" placeholder="(000) 000-0000" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea placeholder="Parlez-moi de votre projet…"></textarea>
+    </div>
+    <button type="submit" class="btn-primary" style="width:100%; padding:18px; font-size:13px;">
+      Envoyer le message
+    </button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="https://static.wixstatic.com/media/623234_b20c3057e55146778c8ca566ddf2f52f~mv2.png" alt="Dayna K Logo Blanc" />
+  <p>© 2026 Dayna K — RE/MAX Crystal · Tous droits réservés</p>
+  <div class="footer-links">
+    <a href="#">Politique de confidentialité</a>
+    <a href="#">Conditions d'utilisation</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
