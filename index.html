@@ -548,22 +548,72 @@
       font-family: var(--font-serif); font-size: 26px; font-weight: 300;
       color: var(--white);
     }
-    .calc-img { position: relative; overflow: hidden; height: 240px; }
-    .calc-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-    .calc-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(18,17,16,0.05), rgba(18,17,16,0.45));
-    }
     .calc-disclaimer {
       font-family: var(--font-sans); font-size: 11px;
       color: rgba(255,255,255,0.35); margin-top: 40px;
       line-height: 1.8; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;
     }
 
+    /* ─── HAMBURGER ───────────────────────────────────────────────── */
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-burger span {
+      display: block; width: 24px; height: 2px; background: var(--dark);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile-menu {
+      display: none; flex-direction: column; gap: 0;
+      position: fixed; top: 73px; left: 0; width: 100%;
+      background: rgba(245,240,234,0.98); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      z-index: 99; padding: 16px 0;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      padding: 14px 28px; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dark); text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a.mobile-cta {
+      margin: 12px 28px 4px; padding: 14px 28px;
+      background: var(--dark); color: var(--white); text-align: center;
+    }
+
+    /* ─── REELS ────────────────────────────────────────────────────── */
+    .reels { padding: 100px 80px; background: var(--cream); }
+    .reels-header { text-align: center; margin-bottom: 56px; }
+    .reels-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .reel-item {
+      position: relative; overflow: hidden;
+      aspect-ratio: 9/16;
+      background: var(--dark);
+    }
+    .reel-item iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; border: 0;
+    }
+
     /* ─── RESPONSIVE ──────────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .reels-grid { grid-template-columns: repeat(3, 1fr); }
+    }
     @media (max-width: 900px) {
       nav { padding: 18px 28px; }
-      .nav-links, .nav-cta { display: none; }
+      .nav-links { display: none; }
+      .nav-cta  { display: none; }
+      .nav-burger { display: flex; }
       .hero, .intro, .contact { grid-template-columns: 1fr; }
       .hero-image { min-height: 55vw; }
       .hero-text { padding: 60px 28px; }
@@ -586,6 +636,11 @@
       .form-row { grid-template-columns: 1fr; }
       footer { flex-direction: column; align-items: center; gap: 20px; text-align: center; padding: 32px 28px; }
       .footer-compliance { text-align: center; }
+      .reels { padding: 80px 28px; }
+      .reels-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .reels-grid { grid-template-columns: 1fr; }
     }
   </style>
   <script type="application/ld+json">
@@ -652,9 +707,19 @@
     <li><a href="#temoignages">Témoignages</a></li>
     <li><a href="#calculatrice">Calculatrice</a></li>
   </ul>
-  <a href="https://www.remax-quebec.com/fr/courtiers-immobiliers/dayna.k" class="nav-cta" style="background:var(--sand);" target="_blank" rel="noopener">Voir mes propriétés</a>
   <a href="#contact" class="nav-cta">Me contacter</a>
+  <button class="nav-burger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="#services"     onclick="closeMenu()">Services</a>
+  <a href="#approche"     onclick="closeMenu()">Approche</a>
+  <a href="#secteurs"     onclick="closeMenu()">Secteurs</a>
+  <a href="#temoignages"  onclick="closeMenu()">Témoignages</a>
+  <a href="#calculatrice" onclick="closeMenu()">Calculatrice</a>
+  <a href="#contact" class="mobile-cta" onclick="closeMenu()">Me contacter</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -670,7 +735,6 @@
     <div class="hero-btns">
       <a href="#contact" class="btn-primary">Obtenir une évaluation</a>
       <a href="#services" class="btn-outline">Découvrir mes services</a>
-      <a href="https://www.remax-quebec.com/fr/courtiers-immobiliers/dayna.k" class="btn-sand" target="_blank" rel="noopener">Voir mes propriétés</a>
     </div>
   </div>
   <div class="hero-image">
@@ -922,24 +986,43 @@
           <div class="calc-breakdown-value" id="calc-schl">—</div>
         </div>
       </div>
-      <div class="calc-img">
-        <img src="images/dayna-about.jpg" alt="Dayna K — Courtière immobilière Rive-Nord" />
-        <div class="calc-img-overlay"></div>
-      </div>
     </div>
 
   </div>
   <p class="calc-disclaimer">Calculs basés sur la composition semi-annuelle des intérêts selon les règles hypothécaires canadiennes. Ces résultats sont à titre indicatif seulement et ne constituent pas une offre de financement. Les taux et modalités peuvent varier selon votre institution financière.</p>
 </section>
 
+<!-- REELS -->
+<section class="reels" id="reels">
+  <div class="reels-header reveal">
+    <p class="section-label" style="text-align:center">Mon contenu</p>
+    <h2 class="section-title">Apprenez à me <em>connaître</em></h2>
+    <p class="section-sub" style="margin-top:16px;">Quelques secondes pour mieux comprendre qui je suis et comment je travaille.</p>
+  </div>
+  <div class="reels-grid">
+    <div class="reel-item reveal">
+      <iframe src="https://www.youtube.com/embed/u1oJP7aebGI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 1"></iframe>
+    </div>
+    <div class="reel-item reveal">
+      <iframe src="https://www.youtube.com/embed/bPjRBV-I6Ss" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 2"></iframe>
+    </div>
+    <div class="reel-item reveal">
+      <iframe src="https://www.youtube.com/embed/v6xdxsbs8X4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 3"></iframe>
+    </div>
+    <div class="reel-item reveal">
+      <iframe src="https://www.youtube.com/embed/fhF3x5Ak3Kc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 4"></iframe>
+    </div>
+    <div class="reel-item reveal">
+      <iframe src="https://www.youtube.com/embed/Q7T44wKjVek" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 5"></iframe>
+    </div>
+  </div>
+</section>
+
 <!-- CTA BAND -->
 <section class="cta-band">
   <h2>Prête à vous accompagner<br><em>dès aujourd'hui</em></h2>
   <p>Vous êtes sur la Rive-Nord de Montréal? Une évaluation gratuite, un premier appel sans engagement. Commençons ensemble.</p>
-  <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
-    <a href="#contact" class="btn-white">Obtenir une évaluation gratuite</a>
-    <a href="https://www.remax-quebec.com/fr/courtiers-immobiliers/dayna.k" class="btn-sand" target="_blank" rel="noopener">Voir mes propriétés</a>
-  </div>
+  <a href="#contact" class="btn-white">Obtenir une évaluation gratuite</a>
 </section>
 
 <!-- CONTACT -->
@@ -1145,6 +1228,27 @@
     });
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
+
+  // ─── HAMBURGER MENU ──────────────────────────────────────────────
+  function toggleMenu() {
+    const menu = document.getElementById('navMobileMenu');
+    const burger = document.querySelector('.nav-burger');
+    menu.classList.toggle('open');
+    burger.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('navMobileMenu').classList.remove('open');
+    document.querySelector('.nav-burger').classList.remove('open');
+  }
+  // Fermer le menu si on clique en dehors
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('navMobileMenu');
+    const burger = document.querySelector('.nav-burger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) {
+      menu.classList.remove('open');
+      burger.classList.remove('open');
+    }
+  });
 </script>
 </body>
 </html>
