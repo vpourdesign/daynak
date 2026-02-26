@@ -55,7 +55,9 @@
       border-bottom: 1px solid rgba(0,0,0,0.06);
       transition: padding 0.3s;
     }
+    .nav-logo { display: flex; align-items: center; gap: 16px; }
     .nav-logo img { height: 34px; }
+    .nav-logo .nav-logo-remax { height: 28px; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
       font-family: var(--font-sans); font-size: 13px; font-weight: 400;
@@ -422,12 +424,23 @@
     footer {
       background: var(--dark); color: rgba(255,255,255,0.5);
       padding: 40px 80px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 32px;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
-    footer img { height: 28px; opacity: 0.6; }
-    footer p { font-size: 12px; }
-    .footer-links { display: flex; gap: 28px; }
+    footer > img { height: 28px; opacity: 0.6; flex-shrink: 0; margin-top: 4px; }
+    .footer-compliance { flex: 1; }
+    .footer-compliance p { font-size: 12px; line-height: 1.8; }
+    .footer-compliance .footer-broker-name {
+      font-size: 13px; color: rgba(255,255,255,0.75); font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .footer-compliance a {
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-compliance a:hover { color: var(--sand); }
+    .footer-links { display: flex; gap: 28px; flex-shrink: 0; margin-top: 4px; }
     .footer-links a {
       font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none;
       letter-spacing: 0.06em;
@@ -535,22 +548,72 @@
       font-family: var(--font-serif); font-size: 26px; font-weight: 300;
       color: var(--white);
     }
-    .calc-img { position: relative; overflow: hidden; height: 240px; }
-    .calc-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-    .calc-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(18,17,16,0.05), rgba(18,17,16,0.45));
-    }
     .calc-disclaimer {
       font-family: var(--font-sans); font-size: 11px;
       color: rgba(255,255,255,0.35); margin-top: 40px;
       line-height: 1.8; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;
     }
 
+    /* ─── HAMBURGER ───────────────────────────────────────────────── */
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-burger span {
+      display: block; width: 24px; height: 2px; background: var(--dark);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile-menu {
+      display: none; flex-direction: column; gap: 0;
+      position: fixed; top: 73px; left: 0; width: 100%;
+      background: rgba(245,240,234,0.98); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      z-index: 99; padding: 16px 0;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      padding: 14px 28px; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dark); text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a.mobile-cta {
+      margin: 12px 28px 4px; padding: 14px 28px;
+      background: var(--dark); color: var(--white); text-align: center;
+    }
+
+    /* ─── REELS ────────────────────────────────────────────────────── */
+    .reels { padding: 100px 80px; background: var(--cream); }
+    .reels-header { text-align: center; margin-bottom: 56px; }
+    .reels-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .reel-item {
+      position: relative; overflow: hidden;
+      aspect-ratio: 9/16;
+      background: var(--dark);
+    }
+    .reel-item iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; border: 0;
+    }
+
     /* ─── RESPONSIVE ──────────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .reels-grid { grid-template-columns: repeat(3, 1fr); }
+    }
     @media (max-width: 900px) {
       nav { padding: 18px 28px; }
-      .nav-links, .nav-cta { display: none; }
+      .nav-links { display: none; }
+      .nav-cta  { display: none; }
+      .nav-burger { display: flex; }
       .hero, .intro, .contact { grid-template-columns: 1fr; }
       .hero-image { min-height: 55vw; }
       .hero-text { padding: 60px 28px; }
@@ -571,22 +634,31 @@
       .contact-info, .contact-form { padding: 60px 28px; }
       .intro-text { padding: 60px 28px; }
       .form-row { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 28px; }
+      footer { flex-direction: column; align-items: center; gap: 20px; text-align: center; padding: 32px 28px; }
+      .footer-compliance { text-align: center; }
+      .reels { padding: 80px 28px; }
+      .reels-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .reels-grid { grid-template-columns: 1fr; }
     }
   </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    "name": "Dayna K — Courtière Immobilière RE/MAX Crystal",
+    "name": "Dayna Kapogiannatos — Courtière Immobilière RE/MAX Crystal",
     "description": "Courtière immobilière certifiée sur la Rive-Nord de Montréal. Spécialisée dans l'achat, la vente et l'évaluation de propriétés à Mirabel, Blainville, Lorraine, Rosemère, Saint-Jérôme, Saint-Colomban et environs.",
     "url": "https://daynak.ca",
-    "telephone": "+15140000000",
-    "email": "dayna@remax.net",
+    "telephone": "+14388827384",
+    "email": "dayna.k@remax-quebec.com",
     "image": "https://daynak.ca/images/dayna-hero.jpg",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "228 boul. Labelle",
+      "addressLocality": "Sainte-Thérèse",
+      "postalCode": "J7E 2X7",
       "addressRegion": "QC",
       "addressCountry": "CA"
     },
@@ -626,6 +698,7 @@
 <nav>
   <div class="nav-logo">
     <img src="https://static.wixstatic.com/media/623234_38d0a1ad40e8470493cc650fc46c9361~mv2.png" alt="Dayna K Logo" />
+    <img src="https://static.wixstatic.com/media/623234_6395502c46a0448ea97d9111de1e7f3b~mv2.png" alt="RE/MAX Crystal" class="nav-logo-remax" />
   </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -634,9 +707,19 @@
     <li><a href="#temoignages">Témoignages</a></li>
     <li><a href="#calculatrice">Calculatrice</a></li>
   </ul>
-  <a href="https://www.remax-quebec.com/fr/courtiers-immobiliers/dayna.k" class="nav-cta" style="background:var(--sand);" target="_blank" rel="noopener">Voir mes propriétés</a>
   <a href="#contact" class="nav-cta">Me contacter</a>
+  <button class="nav-burger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="#services"     onclick="closeMenu()">Services</a>
+  <a href="#approche"     onclick="closeMenu()">Approche</a>
+  <a href="#secteurs"     onclick="closeMenu()">Secteurs</a>
+  <a href="#temoignages"  onclick="closeMenu()">Témoignages</a>
+  <a href="#calculatrice" onclick="closeMenu()">Calculatrice</a>
+  <a href="#contact" class="mobile-cta" onclick="closeMenu()">Me contacter</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -652,7 +735,6 @@
     <div class="hero-btns">
       <a href="#contact" class="btn-primary">Obtenir une évaluation</a>
       <a href="#services" class="btn-outline">Découvrir mes services</a>
-      <a href="https://www.remax-quebec.com/fr/courtiers-immobiliers/dayna.k" class="btn-sand" target="_blank" rel="noopener">Voir mes propriétés</a>
     </div>
   </div>
   <div class="hero-image">
@@ -904,24 +986,43 @@
           <div class="calc-breakdown-value" id="calc-schl">—</div>
         </div>
       </div>
-      <div class="calc-img">
-        <img src="images/dayna-about.jpg" alt="Dayna K — Courtière immobilière Rive-Nord" />
-        <div class="calc-img-overlay"></div>
-      </div>
     </div>
 
   </div>
   <p class="calc-disclaimer">Calculs basés sur la composition semi-annuelle des intérêts selon les règles hypothécaires canadiennes. Ces résultats sont à titre indicatif seulement et ne constituent pas une offre de financement. Les taux et modalités peuvent varier selon votre institution financière.</p>
 </section>
 
+<!-- REELS -->
+<section class="reels" id="reels">
+  <div class="reels-header reveal">
+    <p class="section-label" style="text-align:center">Mon contenu</p>
+    <h2 class="section-title">Apprenez à me <em>connaître</em></h2>
+    <p class="section-sub" style="margin-top:16px;">Quelques secondes pour mieux comprendre qui je suis et comment je travaille.</p>
+  </div>
+  <div class="reels-grid">
+    <div class="reel-item reveal">
+      <iframe src="https://www.youtube.com/embed/u1oJP7aebGI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 1"></iframe>
+    </div>
+    <div class="reel-item reveal">
+      <iframe src="https://www.youtube.com/embed/bPjRBV-I6Ss" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 2"></iframe>
+    </div>
+    <div class="reel-item reveal">
+      <iframe src="https://www.youtube.com/embed/v6xdxsbs8X4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 3"></iframe>
+    </div>
+    <div class="reel-item reveal">
+      <iframe src="https://www.youtube.com/embed/fhF3x5Ak3Kc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 4"></iframe>
+    </div>
+    <div class="reel-item reveal">
+      <iframe src="https://www.youtube.com/embed/Q7T44wKjVek" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 5"></iframe>
+    </div>
+  </div>
+</section>
+
 <!-- CTA BAND -->
 <section class="cta-band">
   <h2>Prête à vous accompagner<br><em>dès aujourd'hui</em></h2>
   <p>Vous êtes sur la Rive-Nord de Montréal? Une évaluation gratuite, un premier appel sans engagement. Commençons ensemble.</p>
-  <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
-    <a href="#contact" class="btn-white">Obtenir une évaluation gratuite</a>
-    <a href="https://www.remax-quebec.com/fr/courtiers-immobiliers/dayna.k" class="btn-sand" target="_blank" rel="noopener">Voir mes propriétés</a>
-  </div>
+  <a href="#contact" class="btn-white">Obtenir une évaluation gratuite</a>
 </section>
 
 <!-- CONTACT -->
@@ -932,16 +1033,20 @@
       Parlons de<br><em>votre projet</em>
     </h2>
     <div class="contact-detail">
+      <p class="contact-detail-label">Courtière</p>
+      <p class="contact-detail">Dayna Kapogiannatos<br>Courtier immobilier résidentiel</p>
+    </div>
+    <div class="contact-detail">
       <p class="contact-detail-label">Téléphone</p>
-      <a href="tel:+15141234567" class="contact-detail">(514) 000-0000</a>
+      <a href="tel:+14388827384" class="contact-detail">(438) 882-7384</a>
     </div>
     <div class="contact-detail">
       <p class="contact-detail-label">Courriel</p>
-      <a href="mailto:dayna@remax.net" class="contact-detail">dayna@remax.net</a>
+      <a href="mailto:dayna.k@remax-quebec.com" class="contact-detail">dayna.k@remax-quebec.com</a>
     </div>
     <div class="contact-detail">
       <p class="contact-detail-label">Bureau</p>
-      <p class="contact-detail">RE/MAX Crystal<br>Adresse du bureau</p>
+      <p class="contact-detail">RE/MAX Crystal, Agence immobilière<br>228 boul. Labelle<br>Ste-Thérèse, Qc&nbsp; J7E 2X7</p>
     </div>
     <div style="margin-top: 48px;">
       <img src="https://static.wixstatic.com/media/623234_6395502c46a0448ea97d9111de1e7f3b~mv2.png" alt="RE/MAX Crystal" style="height:32px; opacity:0.7;" />
@@ -951,40 +1056,54 @@
     <h2 class="section-title" style="font-family:var(--font-serif); font-weight:300; font-size:40px; margin-bottom:40px;">
       Nous <em style="color:var(--brown)">contacter</em>
     </h2>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Prénom</label>
-        <input type="text" placeholder="Votre prénom" />
+    <form action="https://formspree.io/f/meelndlr" method="POST">
+      <input type="hidden" name="_language" value="fr" />
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contact-prenom">Prénom</label>
+          <input id="contact-prenom" type="text" name="prenom" placeholder="Votre prénom" required />
+        </div>
+        <div class="form-group">
+          <label for="contact-nom">Nom</label>
+          <input id="contact-nom" type="text" name="nom" placeholder="Votre nom" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contact-courriel">Courriel</label>
+          <input id="contact-courriel" type="email" name="email" placeholder="votre@courriel.com" required />
+        </div>
+        <div class="form-group">
+          <label for="contact-tel">Téléphone</label>
+          <input id="contact-tel" type="tel" name="telephone" placeholder="(000) 000-0000" />
+        </div>
       </div>
       <div class="form-group">
-        <label>Nom</label>
-        <input type="text" placeholder="Votre nom" />
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" placeholder="Parlez-moi de votre projet…" required></textarea>
       </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Courriel</label>
-        <input type="email" placeholder="votre@courriel.com" />
-      </div>
-      <div class="form-group">
-        <label>Téléphone</label>
-        <input type="tel" placeholder="(000) 000-0000" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Message</label>
-      <textarea placeholder="Parlez-moi de votre projet…"></textarea>
-    </div>
-    <button type="submit" class="btn-primary" style="width:100%; padding:18px; font-size:13px;">
-      Envoyer le message
-    </button>
+      <button type="submit" class="btn-primary" style="width:100%; padding:18px; font-size:13px;">
+        Envoyer le message
+      </button>
+    </form>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <img src="https://static.wixstatic.com/media/623234_b20c3057e55146778c8ca566ddf2f52f~mv2.png" alt="Dayna K Logo Blanc" />
-  <p>© 2026 Dayna K — RE/MAX Crystal · Tous droits réservés</p>
+  <div class="footer-compliance">
+    <p class="footer-broker-name">Dayna Kapogiannatos, courtier immobilier résidentiel</p>
+    <p>RE/MAX Crystal, Agence immobilière</p>
+    <p>228 boul. Labelle, Ste-Thérèse, Qc&nbsp; J7E 2X7</p>
+    <p style="margin-top:4px;">
+      <a href="tel:+14388827384">(438) 882-7384</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:dayna.k@remax-quebec.com">dayna.k@remax-quebec.com</a>
+    </p>
+    <p style="margin-top:10px;">© 2026 Dayna Kapogiannatos · RE/MAX Crystal · Tous droits réservés</p>
+  </div>
   <div class="footer-links">
     <a href="#">Politique de confidentialité</a>
     <a href="#">Conditions d'utilisation</a>
@@ -1109,6 +1228,27 @@
     });
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
+
+  // ─── HAMBURGER MENU ──────────────────────────────────────────────
+  function toggleMenu() {
+    const menu = document.getElementById('navMobileMenu');
+    const burger = document.querySelector('.nav-burger');
+    menu.classList.toggle('open');
+    burger.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('navMobileMenu').classList.remove('open');
+    document.querySelector('.nav-burger').classList.remove('open');
+  }
+  // Fermer le menu si on clique en dehors
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('navMobileMenu');
+    const burger = document.querySelector('.nav-burger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) {
+      menu.classList.remove('open');
+      burger.classList.remove('open');
+    }
+  });
 </script>
 </body>
 </html>
