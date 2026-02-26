@@ -55,7 +55,9 @@
       border-bottom: 1px solid rgba(0,0,0,0.06);
       transition: padding 0.3s;
     }
+    .nav-logo { display: flex; align-items: center; gap: 16px; }
     .nav-logo img { height: 34px; }
+    .nav-logo .nav-logo-remax { height: 28px; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
       font-family: var(--font-sans); font-size: 13px; font-weight: 400;
@@ -422,12 +424,23 @@
     footer {
       background: var(--dark); color: rgba(255,255,255,0.5);
       padding: 40px 80px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 32px;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
-    footer img { height: 28px; opacity: 0.6; }
-    footer p { font-size: 12px; }
-    .footer-links { display: flex; gap: 28px; }
+    footer > img { height: 28px; opacity: 0.6; flex-shrink: 0; margin-top: 4px; }
+    .footer-compliance { flex: 1; }
+    .footer-compliance p { font-size: 12px; line-height: 1.8; }
+    .footer-compliance .footer-broker-name {
+      font-size: 13px; color: rgba(255,255,255,0.75); font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .footer-compliance a {
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-compliance a:hover { color: var(--sand); }
+    .footer-links { display: flex; gap: 28px; flex-shrink: 0; margin-top: 4px; }
     .footer-links a {
       font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none;
       letter-spacing: 0.06em;
@@ -571,22 +584,26 @@
       .contact-info, .contact-form { padding: 60px 28px; }
       .intro-text { padding: 60px 28px; }
       .form-row { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 28px; }
+      footer { flex-direction: column; align-items: center; gap: 20px; text-align: center; padding: 32px 28px; }
+      .footer-compliance { text-align: center; }
     }
   </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    "name": "Dayna K — Courtière Immobilière RE/MAX Crystal",
+    "name": "Dayna Kapogiannatos — Courtière Immobilière RE/MAX Crystal",
     "description": "Courtière immobilière certifiée sur la Rive-Nord de Montréal. Spécialisée dans l'achat, la vente et l'évaluation de propriétés à Mirabel, Blainville, Lorraine, Rosemère, Saint-Jérôme, Saint-Colomban et environs.",
     "url": "https://daynak.ca",
-    "telephone": "+15140000000",
-    "email": "dayna@remax.net",
+    "telephone": "+14388827384",
+    "email": "dayna.k@remax-quebec.com",
     "image": "https://daynak.ca/images/dayna-hero.jpg",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "228 boul. Labelle",
+      "addressLocality": "Sainte-Thérèse",
+      "postalCode": "J7E 2X7",
       "addressRegion": "QC",
       "addressCountry": "CA"
     },
@@ -626,6 +643,7 @@
 <nav>
   <div class="nav-logo">
     <img src="https://static.wixstatic.com/media/623234_38d0a1ad40e8470493cc650fc46c9361~mv2.png" alt="Dayna K Logo" />
+    <img src="https://static.wixstatic.com/media/623234_6395502c46a0448ea97d9111de1e7f3b~mv2.png" alt="RE/MAX Crystal" class="nav-logo-remax" />
   </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -932,16 +950,20 @@
       Parlons de<br><em>votre projet</em>
     </h2>
     <div class="contact-detail">
+      <p class="contact-detail-label">Courtière</p>
+      <p class="contact-detail">Dayna Kapogiannatos<br>Courtier immobilier résidentiel</p>
+    </div>
+    <div class="contact-detail">
       <p class="contact-detail-label">Téléphone</p>
-      <a href="tel:+15141234567" class="contact-detail">(514) 000-0000</a>
+      <a href="tel:+14388827384" class="contact-detail">(438) 882-7384</a>
     </div>
     <div class="contact-detail">
       <p class="contact-detail-label">Courriel</p>
-      <a href="mailto:dayna@remax.net" class="contact-detail">dayna@remax.net</a>
+      <a href="mailto:dayna.k@remax-quebec.com" class="contact-detail">dayna.k@remax-quebec.com</a>
     </div>
     <div class="contact-detail">
       <p class="contact-detail-label">Bureau</p>
-      <p class="contact-detail">RE/MAX Crystal<br>Adresse du bureau</p>
+      <p class="contact-detail">RE/MAX Crystal, Agence immobilière<br>228 boul. Labelle<br>Ste-Thérèse, Qc&nbsp; J7E 2X7</p>
     </div>
     <div style="margin-top: 48px;">
       <img src="https://static.wixstatic.com/media/623234_6395502c46a0448ea97d9111de1e7f3b~mv2.png" alt="RE/MAX Crystal" style="height:32px; opacity:0.7;" />
@@ -951,40 +973,54 @@
     <h2 class="section-title" style="font-family:var(--font-serif); font-weight:300; font-size:40px; margin-bottom:40px;">
       Nous <em style="color:var(--brown)">contacter</em>
     </h2>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Prénom</label>
-        <input type="text" placeholder="Votre prénom" />
+    <form action="https://formspree.io/f/meelndlr" method="POST">
+      <input type="hidden" name="_language" value="fr" />
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contact-prenom">Prénom</label>
+          <input id="contact-prenom" type="text" name="prenom" placeholder="Votre prénom" required />
+        </div>
+        <div class="form-group">
+          <label for="contact-nom">Nom</label>
+          <input id="contact-nom" type="text" name="nom" placeholder="Votre nom" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contact-courriel">Courriel</label>
+          <input id="contact-courriel" type="email" name="email" placeholder="votre@courriel.com" required />
+        </div>
+        <div class="form-group">
+          <label for="contact-tel">Téléphone</label>
+          <input id="contact-tel" type="tel" name="telephone" placeholder="(000) 000-0000" />
+        </div>
       </div>
       <div class="form-group">
-        <label>Nom</label>
-        <input type="text" placeholder="Votre nom" />
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" placeholder="Parlez-moi de votre projet…" required></textarea>
       </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Courriel</label>
-        <input type="email" placeholder="votre@courriel.com" />
-      </div>
-      <div class="form-group">
-        <label>Téléphone</label>
-        <input type="tel" placeholder="(000) 000-0000" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Message</label>
-      <textarea placeholder="Parlez-moi de votre projet…"></textarea>
-    </div>
-    <button type="submit" class="btn-primary" style="width:100%; padding:18px; font-size:13px;">
-      Envoyer le message
-    </button>
+      <button type="submit" class="btn-primary" style="width:100%; padding:18px; font-size:13px;">
+        Envoyer le message
+      </button>
+    </form>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <img src="https://static.wixstatic.com/media/623234_b20c3057e55146778c8ca566ddf2f52f~mv2.png" alt="Dayna K Logo Blanc" />
-  <p>© 2026 Dayna K — RE/MAX Crystal · Tous droits réservés</p>
+  <div class="footer-compliance">
+    <p class="footer-broker-name">Dayna Kapogiannatos, courtier immobilier résidentiel</p>
+    <p>RE/MAX Crystal, Agence immobilière</p>
+    <p>228 boul. Labelle, Ste-Thérèse, Qc&nbsp; J7E 2X7</p>
+    <p style="margin-top:4px;">
+      <a href="tel:+14388827384">(438) 882-7384</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:dayna.k@remax-quebec.com">dayna.k@remax-quebec.com</a>
+    </p>
+    <p style="margin-top:10px;">© 2026 Dayna Kapogiannatos · RE/MAX Crystal · Tous droits réservés</p>
+  </div>
   <div class="footer-links">
     <a href="#">Politique de confidentialité</a>
     <a href="#">Conditions d'utilisation</a>
