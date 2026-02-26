@@ -624,10 +624,13 @@
       .reels-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 900px) {
-      nav { padding: 18px 28px; }
+      nav { padding: 14px 20px; }
       .nav-links { display: none; }
       .nav-cta  { display: none; }
       .nav-burger { display: flex; }
+      .nav-logo { flex-direction: column; align-items: flex-start; gap: 3px; }
+      .nav-logo img { height: 24px; }
+      .nav-logo .nav-logo-remax { height: 18px; }
       .hero, .intro, .contact { grid-template-columns: 1fr; }
       .hero-image { min-height: 55vw; }
       .hero-text { padding: 60px 28px; }
