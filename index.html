@@ -451,6 +451,102 @@
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ─── CALCULATRICE ────────────────────────────────────────────── */
+    .calculatrice { padding: 120px 80px; background: var(--dark); }
+    .calc-header { margin-bottom: 64px; }
+    .calc-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: start;
+    }
+    .calc-form { background: var(--cream); padding: 48px; }
+    .calc-field { margin-bottom: 24px; }
+    .calc-label {
+      display: block;
+      font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--brown); margin-bottom: 8px;
+    }
+    .calc-input-wrap { display: flex; }
+    .calc-affix {
+      background: var(--brown); color: var(--white);
+      padding: 13px 16px; font-family: var(--font-sans); font-size: 13px;
+      font-weight: 500; display: flex; align-items: center; flex-shrink: 0;
+    }
+    .calc-input {
+      flex: 1; min-width: 0;
+      border: 1px solid rgba(0,0,0,0.12); border-left: none;
+      padding: 13px 16px; font-family: var(--font-sans); font-size: 15px;
+      color: var(--dark); background: var(--white); outline: none;
+      transition: border-color 0.2s; box-sizing: border-box;
+    }
+    .calc-input:focus { border-color: var(--sand); }
+    .calc-input-right {
+      border-left: 1px solid rgba(0,0,0,0.12); border-right: none;
+    }
+    .calc-affix-right { border-left: none; }
+    .calc-select {
+      width: 100%; border: 1px solid rgba(0,0,0,0.12);
+      padding: 13px 16px; font-family: var(--font-sans); font-size: 14px;
+      color: var(--dark); background: var(--white); outline: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B4A38' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 16px center;
+      padding-right: 40px; cursor: pointer; transition: border-color 0.2s;
+    }
+    .calc-select:focus { border-color: var(--sand); }
+    .calc-down-hint {
+      font-family: var(--font-sans); font-size: 11px;
+      color: var(--brown); margin-top: 6px; min-height: 16px;
+    }
+    .calc-btn-calc {
+      width: 100%; background: var(--sand); color: var(--white);
+      border: none; padding: 18px; font-family: var(--font-sans); font-size: 12px;
+      font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s; margin-top: 8px;
+    }
+    .calc-btn-calc:hover { background: var(--brown); }
+    .calc-results { display: flex; flex-direction: column; }
+    .calc-result-main { background: var(--sand); color: var(--white); padding: 48px; }
+    .calc-result-label {
+      font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.85; margin-bottom: 16px;
+    }
+    .calc-result-value {
+      font-family: var(--font-serif); font-size: 64px; font-weight: 300;
+      line-height: 1; letter-spacing: -0.01em;
+    }
+    .calc-result-freq {
+      font-family: var(--font-sans); font-size: 12px; opacity: 0.7;
+      margin-top: 10px; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .calc-breakdown { display: grid; grid-template-columns: 1fr 1fr; }
+    .calc-breakdown-item {
+      padding: 28px 32px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .calc-breakdown-item:nth-child(even) { border-right: none; }
+    .calc-breakdown-label {
+      font-family: var(--font-sans); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sand); margin-bottom: 8px;
+    }
+    .calc-breakdown-value {
+      font-family: var(--font-serif); font-size: 26px; font-weight: 300;
+      color: var(--white);
+    }
+    .calc-img { position: relative; overflow: hidden; height: 240px; }
+    .calc-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+    .calc-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(18,17,16,0.05), rgba(18,17,16,0.45));
+    }
+    .calc-disclaimer {
+      font-family: var(--font-sans); font-size: 11px;
+      color: rgba(255,255,255,0.35); margin-top: 40px;
+      line-height: 1.8; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;
+    }
+
     /* ─── RESPONSIVE ──────────────────────────────────────────────── */
     @media (max-width: 900px) {
       nav { padding: 18px 28px; }
@@ -467,6 +563,10 @@
       .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
       .secteurs { padding: 80px 28px; }
       .secteurs-grid { grid-template-columns: 1fr; }
+      .calculatrice { padding: 80px 28px; }
+      .calc-layout { grid-template-columns: 1fr; }
+      .calc-form { padding: 32px 24px; }
+      .calc-result-value { font-size: 48px; }
       .cta-band { padding: 60px 28px; }
       .contact-info, .contact-form { padding: 60px 28px; }
       .intro-text { padding: 60px 28px; }
@@ -532,6 +632,7 @@
     <li><a href="#approche">Approche</a></li>
     <li><a href="#secteurs">Secteurs</a></li>
     <li><a href="#temoignages">Témoignages</a></li>
+    <li><a href="#calculatrice">Calculatrice</a></li>
   </ul>
   <a href="https://www.remax-quebec.com/fr/courtiers-immobiliers/dayna.k" class="nav-cta" style="background:var(--sand);" target="_blank" rel="noopener">Voir mes propriétés</a>
   <a href="#contact" class="nav-cta">Me contacter</a>
@@ -722,6 +823,97 @@
   </div>
 </section>
 
+<!-- CALCULATRICE -->
+<section class="calculatrice" id="calculatrice">
+  <div class="calc-header reveal">
+    <p class="section-label" style="text-align:center; color:var(--sand)">Planifiez votre projet</p>
+    <h2 class="section-title" style="text-align:center; color:var(--white)">Calculatrice <em>hypothécaire</em></h2>
+    <p class="section-sub" style="text-align:center; margin-top:16px; color:rgba(255,255,255,0.6);">Estimez vos versements en quelques secondes selon les règles hypothécaires canadiennes.</p>
+  </div>
+  <div class="calc-layout">
+
+    <!-- FORMULAIRE -->
+    <div class="calc-form reveal">
+      <div class="calc-field">
+        <label class="calc-label" for="calc-price">Prix de la propriété</label>
+        <div class="calc-input-wrap">
+          <span class="calc-affix">$</span>
+          <input id="calc-price" class="calc-input" type="text" value="450 000" autocomplete="off" />
+        </div>
+      </div>
+      <div class="calc-field">
+        <label class="calc-label" for="calc-down">Mise de fonds</label>
+        <div class="calc-input-wrap">
+          <span class="calc-affix">$</span>
+          <input id="calc-down" class="calc-input" type="text" value="90 000" autocomplete="off" />
+        </div>
+        <div class="calc-down-hint" id="calc-down-hint"></div>
+      </div>
+      <div class="calc-field">
+        <label class="calc-label" for="calc-rate">Taux d'intérêt annuel</label>
+        <div class="calc-input-wrap">
+          <input id="calc-rate" class="calc-input calc-input-right" type="text" value="5,14" autocomplete="off" />
+          <span class="calc-affix calc-affix-right">%</span>
+        </div>
+      </div>
+      <div class="calc-field">
+        <label class="calc-label" for="calc-amort">Période d'amortissement</label>
+        <select id="calc-amort" class="calc-select">
+          <option value="10">10 ans</option>
+          <option value="15">15 ans</option>
+          <option value="20">20 ans</option>
+          <option value="25" selected>25 ans</option>
+          <option value="30">30 ans</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label class="calc-label" for="calc-freq">Fréquence des versements</label>
+        <select id="calc-freq" class="calc-select">
+          <option value="monthly" selected>Mensuelle (12×/an)</option>
+          <option value="biweekly_acc">Aux 2 semaines accéléré (26×/an)</option>
+          <option value="biweekly">Aux 2 semaines (26×/an)</option>
+          <option value="weekly_acc">Hebdomadaire accéléré (52×/an)</option>
+          <option value="weekly">Hebdomadaire (52×/an)</option>
+        </select>
+      </div>
+      <button class="calc-btn-calc" onclick="calculateMortgage()">Calculer mes versements</button>
+    </div>
+
+    <!-- RÉSULTATS -->
+    <div class="calc-results reveal">
+      <div class="calc-result-main">
+        <p class="calc-result-label">Versement estimé</p>
+        <div class="calc-result-value" id="calc-payment">—</div>
+        <div class="calc-result-freq" id="calc-payment-freq"></div>
+      </div>
+      <div class="calc-breakdown">
+        <div class="calc-breakdown-item">
+          <div class="calc-breakdown-label">Montant hypothécaire</div>
+          <div class="calc-breakdown-value" id="calc-mortgage">—</div>
+        </div>
+        <div class="calc-breakdown-item">
+          <div class="calc-breakdown-label">Total des intérêts</div>
+          <div class="calc-breakdown-value" id="calc-interest">—</div>
+        </div>
+        <div class="calc-breakdown-item">
+          <div class="calc-breakdown-label">Total remboursé</div>
+          <div class="calc-breakdown-value" id="calc-total">—</div>
+        </div>
+        <div class="calc-breakdown-item">
+          <div class="calc-breakdown-label" id="calc-schl-label">Assurance SCHL</div>
+          <div class="calc-breakdown-value" id="calc-schl">—</div>
+        </div>
+      </div>
+      <div class="calc-img">
+        <img src="images/dayna-about.jpg" alt="Dayna K — Courtière immobilière Rive-Nord" />
+        <div class="calc-img-overlay"></div>
+      </div>
+    </div>
+
+  </div>
+  <p class="calc-disclaimer">Calculs basés sur la composition semi-annuelle des intérêts selon les règles hypothécaires canadiennes. Ces résultats sont à titre indicatif seulement et ne constituent pas une offre de financement. Les taux et modalités peuvent varier selon votre institution financière.</p>
+</section>
+
 <!-- CTA BAND -->
 <section class="cta-band">
   <h2>Prête à vous accompagner<br><em>dès aujourd'hui</em></h2>
@@ -800,6 +992,112 @@
 </footer>
 
 <script>
+  // ─── CALCULATRICE HYPOTHÉCAIRE ───────────────────────────────────
+  function calcParse(s) {
+    return parseFloat(String(s).replace(/\s/g, '').replace(',', '.'));
+  }
+  function calcFmt(n, decimals = 2) {
+    return n.toLocaleString('fr-CA', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  }
+
+  function calculateMortgage() {
+    const price     = calcParse(document.getElementById('calc-price').value);
+    const down      = calcParse(document.getElementById('calc-down').value);
+    const rate      = calcParse(document.getElementById('calc-rate').value) / 100;
+    const amort     = parseInt(document.getElementById('calc-amort').value);
+    const freq      = document.getElementById('calc-freq').value;
+
+    if (isNaN(price) || isNaN(down) || isNaN(rate) || price <= 0 || rate <= 0) return;
+
+    const downPct = down / price;
+
+    // ── Assurance SCHL (mise de fonds < 20 %) ──────────────────────
+    let schlRate = 0;
+    if (downPct >= 0.05 && downPct < 0.10) schlRate = 0.0400;
+    else if (downPct >= 0.10 && downPct < 0.15) schlRate = 0.0310;
+    else if (downPct >= 0.15 && downPct < 0.20) schlRate = 0.0280;
+
+    const baseMortgage = price - down;
+    const schlAmount   = baseMortgage * schlRate;
+    const mortgage     = baseMortgage + schlAmount;
+
+    // ── Taux effectifs — composition semi-annuelle canadienne ───────
+    // i_m  = (1 + r/2)^(1/6)  - 1   → mensuel
+    // i_bw = (1 + r/2)^(1/13) - 1   → aux 2 semaines
+    // i_w  = (1 + r/2)^(1/26) - 1   → hebdomadaire
+    const i_m  = Math.pow(1 + rate / 2, 1 / 6)  - 1;
+    const i_bw = Math.pow(1 + rate / 2, 1 / 13) - 1;
+    const i_w  = Math.pow(1 + rate / 2, 1 / 26) - 1;
+
+    let payment, i_eff, n_eff, freqLabel;
+    const n_m = amort * 12;
+    const pmtMonthly = mortgage * i_m / (1 - Math.pow(1 + i_m, -n_m));
+
+    switch (freq) {
+      case 'monthly':
+        payment = pmtMonthly;
+        i_eff = i_m; n_eff = n_m;
+        freqLabel = 'par mois';
+        break;
+      case 'biweekly':
+        i_eff = i_bw; n_eff = amort * 26;
+        payment = mortgage * i_bw / (1 - Math.pow(1 + i_bw, -n_eff));
+        freqLabel = 'aux 2 semaines';
+        break;
+      case 'biweekly_acc':
+        payment = pmtMonthly / 2;
+        i_eff = i_bw;
+        // Nombre réel de versements avant remboursement complet
+        n_eff = Math.log(payment / (payment - mortgage * i_bw)) / Math.log(1 + i_bw);
+        freqLabel = 'aux 2 semaines (accéléré)';
+        break;
+      case 'weekly':
+        i_eff = i_w; n_eff = amort * 52;
+        payment = mortgage * i_w / (1 - Math.pow(1 + i_w, -n_eff));
+        freqLabel = 'par semaine';
+        break;
+      case 'weekly_acc':
+        payment = pmtMonthly / 4;
+        i_eff = i_w;
+        n_eff = Math.log(payment / (payment - mortgage * i_w)) / Math.log(1 + i_w);
+        freqLabel = 'par semaine (accéléré)';
+        break;
+    }
+
+    const totalPaid    = payment * n_eff;
+    const totalInterest = totalPaid - mortgage;
+
+    // ── Affichage ──────────────────────────────────────────────────
+    document.getElementById('calc-payment').textContent     = calcFmt(payment) + ' $';
+    document.getElementById('calc-payment-freq').textContent = freqLabel;
+    document.getElementById('calc-mortgage').textContent    = calcFmt(Math.round(mortgage), 0) + ' $';
+    document.getElementById('calc-interest').textContent    = calcFmt(Math.round(totalInterest), 0) + ' $';
+    document.getElementById('calc-total').textContent       = calcFmt(Math.round(totalPaid), 0) + ' $';
+
+    if (schlAmount > 0) {
+      document.getElementById('calc-schl-label').textContent = 'Assurance SCHL';
+      document.getElementById('calc-schl').textContent       = calcFmt(Math.round(schlAmount), 0) + ' $';
+    } else {
+      document.getElementById('calc-schl-label').textContent = 'Mise de fonds';
+      document.getElementById('calc-schl').textContent       = calcFmt(downPct * 100, 1) + ' %';
+    }
+
+    const msg = schlAmount > 0
+      ? `≈ ${calcFmt(downPct * 100, 1)} % du prix — Assurance SCHL ${calcFmt(schlRate * 100, 2)} % requise`
+      : `≈ ${calcFmt(downPct * 100, 1)} % du prix — Aucune assurance SCHL`;
+    document.getElementById('calc-down-hint').textContent = msg;
+  }
+
+  // Recalcul automatique
+  ['calc-price','calc-down','calc-rate','calc-amort','calc-freq'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', calculateMortgage);
+    if (el) el.addEventListener('change', calculateMortgage);
+  });
+  // Calcul initial au chargement
+  calculateMortgage();
+  // ─────────────────────────────────────────────────────────────────
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
