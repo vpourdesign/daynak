@@ -419,6 +419,20 @@
       border-color: var(--sand);
     }
     .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-success {
+      display: none; text-align: center; padding: 60px 40px;
+    }
+    .form-success-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--sand); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin: 0 auto 24px;
+    }
+    .form-success h3 {
+      font-family: var(--font-serif); font-size: 32px; font-weight: 300;
+      margin-bottom: 12px;
+    }
+    .form-success p { font-size: 14px; color: #666; line-height: 1.7; }
 
     /* ─── FOOTER ──────────────────────────────────────────────────── */
     footer {
@@ -610,10 +624,13 @@
       .reels-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 900px) {
-      nav { padding: 18px 28px; }
+      nav { padding: 14px 20px; }
       .nav-links { display: none; }
       .nav-cta  { display: none; }
       .nav-burger { display: flex; }
+      .nav-logo { flex-direction: column; align-items: flex-start; gap: 3px; }
+      .nav-logo img { height: 24px; }
+      .nav-logo .nav-logo-remax { height: 18px; }
       .hero, .intro, .contact { grid-template-columns: 1fr; }
       .hero-image { min-height: 55vw; }
       .hero-text { padding: 60px 28px; }
@@ -1056,7 +1073,7 @@
     <h2 class="section-title" style="font-family:var(--font-serif); font-weight:300; font-size:40px; margin-bottom:40px;">
       Nous <em style="color:var(--brown)">contacter</em>
     </h2>
-    <form action="https://formspree.io/f/meelndlr" method="POST">
+    <form id="contactForm" action="https://formspree.io/f/meelndlr" method="POST">
       <input type="hidden" name="_language" value="fr" />
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
       <div class="form-row">
@@ -1083,10 +1100,15 @@
         <label for="contact-message">Message</label>
         <textarea id="contact-message" name="message" placeholder="Parlez-moi de votre projet…" required></textarea>
       </div>
-      <button type="submit" class="btn-primary" style="width:100%; padding:18px; font-size:13px;">
+      <button type="submit" id="contactSubmitBtn" class="btn-primary" style="width:100%; padding:18px; font-size:13px;">
         Envoyer le message
       </button>
     </form>
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">✓</div>
+      <h3>Message <em style="color:var(--brown)">envoyé !</em></h3>
+      <p>Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
+    </div>
   </div>
 </section>
 
@@ -1228,6 +1250,34 @@
     });
   }, { threshold: 0.12 });
   reveals.forEach(el => observer.observe(el));
+
+  // ─── FORMSPREE AJAX ──────────────────────────────────────────────
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('contactSubmitBtn');
+      btn.textContent = 'Envoi en cours…';
+      btn.disabled = true;
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          contactForm.style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          btn.textContent = 'Erreur — réessayez';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Erreur — réessayez';
+        btn.disabled = false;
+      }
+    });
+  }
 
   // ─── HAMBURGER MENU ──────────────────────────────────────────────
   function toggleMenu() {
