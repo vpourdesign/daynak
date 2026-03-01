@@ -477,7 +477,7 @@
     }
     .vp-logo:hover {
       animation: none;
-      filter: brightness(1.4) drop-shadow(0 0 18px rgba(200,170,110,0.9));
+      filter: invert(1) brightness(1.4) drop-shadow(0 0 18px rgba(200,170,110,0.9));
       transform: scale(1.07) translateY(-2px);
       transition: filter 0.3s, transform 0.3s;
     }
@@ -486,8 +486,8 @@
       50% { transform: translateY(-5px); }
     }
     @keyframes vpGlow {
-      0%, 100% { filter: brightness(0.7) drop-shadow(0 0 0px rgba(200,170,110,0)); }
-      50% { filter: brightness(1.25) drop-shadow(0 0 14px rgba(200,170,110,0.6)); }
+      0%, 100% { filter: invert(1) brightness(0.7) drop-shadow(0 0 0px rgba(200,170,110,0)); }
+      50% { filter: invert(1) brightness(1.25) drop-shadow(0 0 14px rgba(200,170,110,0.6)); }
     }
 
     /* ─── ANIMATIONS ──────────────────────────────────────────────── */
