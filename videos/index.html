@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mes vidéos — Dayna K | Courtière Immobilière Rive-Nord</title>
+  <meta name="description" content="Découvrez les vidéos de Dayna K, courtière immobilière sur la Rive-Nord de Montréal. Conseils, présentation et contenu immobilier." />
+  <link rel="canonical" href="https://daynak.ca/videos" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #F5F0EA;
+      --warm:    #E8DDD0;
+      --sand:    #C89B7B;
+      --brown:   #6B4A38;
+      --dark:    #121110;
+      --white:   #FFFFFF;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--dark); background: var(--dark); overflow-x: hidden; }
+
+    /* ─── NAV ─────────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 60px;
+      background: rgba(18,17,16,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: padding 0.3s;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 16px; }
+    .nav-logo img { height: 34px; }
+    .nav-logo .nav-logo-remax { height: 36px; filter: brightness(0) invert(1); opacity: 0.75; }
+    .nav-logo-remax-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+    .nav-logo-remax-label { font-family: var(--font-sans); font-size: 8px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 400;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sand); }
+    .nav-cta {
+      background: var(--sand); color: var(--white);
+      padding: 11px 26px; border: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--brown); }
+
+    /* ─── HAMBURGER ───────────────────────────────────────────────── */
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-burger span { display: block; width: 24px; height: 2px; background: var(--white); transition: transform 0.3s, opacity 0.3s; }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile-menu {
+      display: none; flex-direction: column; gap: 0;
+      position: fixed; top: 73px; left: 0; width: 100%;
+      background: rgba(18,17,16,0.98); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 99; padding: 16px 0;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      padding: 14px 28px; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a.mobile-cta {
+      margin: 12px 28px 4px; padding: 14px 28px;
+      background: var(--sand); color: var(--white); text-align: center;
+    }
+
+    /* ─── PAGE HEADER ─────────────────────────────────────────────── */
+    .page-header {
+      padding: 160px 80px 80px;
+      text-align: center;
+      background: var(--dark);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .page-header .section-label {
+      font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand);
+      margin-bottom: 20px; display: block;
+    }
+    .page-header h1 {
+      font-family: var(--font-serif); font-size: clamp(48px, 7vw, 96px);
+      font-weight: 300; line-height: 1.05; color: var(--white);
+    }
+    .page-header h1 em { font-style: italic; color: var(--sand); }
+    .page-header p {
+      margin-top: 20px; font-size: 15px; color: rgba(255,255,255,0.5);
+      line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 36px;
+      font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--sand); }
+    .back-link::before { content: '←'; font-size: 14px; }
+
+    /* ─── VIDEOS GRID ─────────────────────────────────────────────── */
+    .videos-section {
+      padding: 80px 60px 120px;
+      background: var(--dark);
+    }
+    .videos-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .video-item {
+      position: relative; overflow: hidden;
+      aspect-ratio: 9/16;
+      background: #1a1918;
+      width: calc(33.333% - 14px);
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .video-item.visible { opacity: 1; transform: translateY(0); }
+    .video-item:nth-child(2) { transition-delay: 0.1s; }
+    .video-item:nth-child(3) { transition-delay: 0.2s; }
+    .video-item:nth-child(4) { transition-delay: 0.15s; }
+    .video-item:nth-child(5) { transition-delay: 0.25s; }
+    .video-item iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; border: 0;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────────────── */
+    footer {
+      background: #0a0908; color: rgba(255,255,255,0.5);
+      padding: 40px 80px;
+      display: flex; flex-direction: column; gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-main {
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 32px;
+    }
+    .footer-main > img { height: 28px; opacity: 0.6; flex-shrink: 0; margin-top: 4px; }
+    .footer-compliance { flex: 1; }
+    .footer-compliance p { font-size: 12px; line-height: 1.8; }
+    .footer-compliance .footer-broker-name {
+      font-size: 13px; color: rgba(255,255,255,0.75); font-weight: 500; margin-bottom: 2px;
+    }
+    .footer-compliance a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer-compliance a:hover { color: var(--sand); }
+    .footer-links { display: flex; gap: 28px; flex-shrink: 0; margin-top: 4px; }
+    .footer-links a {
+      font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none;
+      letter-spacing: 0.06em; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--sand); }
+    .footer-credit {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-top: 28px; padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 10px; letter-spacing: 0.14em; color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+    }
+    .vp-logo {
+      height: 52px;
+      animation: vpFloat 3s ease-in-out infinite, vpGlow 3s ease-in-out infinite;
+      cursor: pointer;
+    }
+    .vp-logo:hover {
+      animation: none;
+      filter: invert(1) brightness(1.4) drop-shadow(0 0 18px rgba(200,170,110,0.9));
+      transform: scale(1.07) translateY(-2px);
+      transition: filter 0.3s, transform 0.3s;
+    }
+    @keyframes vpFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    @keyframes vpGlow {
+      0%, 100% { filter: invert(1) brightness(0.7) drop-shadow(0 0 0px rgba(200,170,110,0)); }
+      50% { filter: invert(1) brightness(1.25) drop-shadow(0 0 14px rgba(200,170,110,0.6)); }
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .nav-cta  { display: none; }
+      .nav-burger { display: flex; }
+      .nav-logo { flex-direction: column; align-items: flex-start; gap: 3px; }
+      .nav-logo img { height: 32px; }
+      .nav-logo .nav-logo-remax { height: 24px; }
+      .page-header { padding: 130px 28px 60px; }
+      .videos-section { padding: 60px 20px 80px; }
+      .video-item { width: calc(50% - 10px); }
+      footer { padding: 32px 28px; }
+      .footer-main { flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+      .footer-compliance { text-align: center; }
+    }
+    @media (max-width: 500px) {
+      .video-item { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <a href="/"><img src="https://static.wixstatic.com/media/623234_b20c3057e55146778c8ca566ddf2f52f~mv2.png" alt="Dayna K Logo" /></a>
+    <div class="nav-logo-remax-wrap">
+      <img src="https://static.wixstatic.com/media/623234_6395502c46a0448ea97d9111de1e7f3b~mv2.png" alt="RE/MAX Crystal" class="nav-logo-remax" />
+      <span class="nav-logo-remax-label">Agence immobilière</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#approche">Approche</a></li>
+    <li><a href="/#secteurs">Secteurs</a></li>
+    <li><a href="/#temoignages">Témoignages</a></li>
+    <li><a href="/#calculatrice">Calculatrice</a></li>
+  </ul>
+  <a href="/#contact" class="nav-cta">Me contacter</a>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="/#services"     onclick="closeMenu()">Services</a>
+  <a href="/#approche"     onclick="closeMenu()">Approche</a>
+  <a href="/#secteurs"     onclick="closeMenu()">Secteurs</a>
+  <a href="/#temoignages"  onclick="closeMenu()">Témoignages</a>
+  <a href="/#calculatrice" onclick="closeMenu()">Calculatrice</a>
+  <a href="/#contact" class="mobile-cta" onclick="closeMenu()">Me contacter</a>
+</div>
+
+<!-- HEADER -->
+<div class="page-header">
+  <span class="section-label">Mon contenu</span>
+  <h1>Mes <em>vidéos</em></h1>
+  <p>Quelques secondes pour mieux comprendre qui je suis et comment je travaille.</p>
+  <a href="/" class="back-link">Retour à l'accueil</a>
+</div>
+
+<!-- VIDEOS -->
+<section class="videos-section">
+  <div class="videos-grid">
+    <div class="video-item">
+      <iframe src="https://www.youtube.com/embed/u1oJP7aebGI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 1"></iframe>
+    </div>
+    <div class="video-item">
+      <iframe src="https://www.youtube.com/embed/bPjRBV-I6Ss" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 2"></iframe>
+    </div>
+    <div class="video-item">
+      <iframe src="https://www.youtube.com/embed/v6xdxsbs8X4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 3"></iframe>
+    </div>
+    <div class="video-item">
+      <iframe src="https://www.youtube.com/embed/fhF3x5Ak3Kc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 4"></iframe>
+    </div>
+    <div class="video-item">
+      <iframe src="https://www.youtube.com/embed/Q7T44wKjVek" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Vidéo 5"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <img src="https://static.wixstatic.com/media/623234_b20c3057e55146778c8ca566ddf2f52f~mv2.png" alt="Dayna K Logo Blanc" />
+    <div class="footer-compliance">
+      <p class="footer-broker-name">Dayna Kapogiannatos, courtier immobilier résidentiel</p>
+      <p>RE/MAX Crystal, Agence immobilière</p>
+      <p>228 boul. Labelle, Ste-Thérèse, Qc&nbsp; J7E 2X7</p>
+      <p style="margin-top:4px;">
+        <a href="tel:+14388827384">(438) 882-7384</a>
+        &nbsp;·&nbsp;
+        <a href="mailto:dayna.k@remax-quebec.com">dayna.k@remax-quebec.com</a>
+      </p>
+      <p style="margin-top:10px;">© 2026 Dayna Kapogiannatos · RE/MAX Crystal · Tous droits réservés</p>
+    </div>
+    <div class="footer-links">
+      <a href="#">Politique de confidentialité</a>
+      <a href="#">Conditions d'utilisation</a>
+    </div>
+  </div>
+  <div class="footer-credit">
+    <span>Stratégie web</span>
+    <a href="https://www.vpourdesign.com" target="_blank" rel="noopener noreferrer">
+      <img class="vp-logo" src="../logo-vpourdesign.png" alt="vpourdesign" />
+    </a>
+  </div>
+</footer>
+
+<script>
+  // ─── BURGER ────────────────────────────────────────────────────
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMenu() {
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // ─── FADE-IN ANIMATION ─────────────────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.video-item').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
