@@ -10,9 +10,15 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
 
+    # Nécessaire pour que le bot puisse committer et pousser vers GitHub
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout du dépôt
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Installation de Node.js
         uses: actions/setup-node@v4
