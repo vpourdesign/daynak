@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mes propriétés — Dayna K, Courtière Immobilière RE/MAX Crystal</title>
+  <meta name="description" content="Consultez toutes les propriétés actuellement listées par Dayna K, courtière immobilière sur la Rive-Nord de Montréal — RE/MAX Crystal." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://daynak.ca/proprietes.html" />
+  <meta property="og:title" content="Mes propriétés — Dayna K RE/MAX Crystal" />
+  <meta property="og:description" content="Toutes les propriétés à vendre par Dayna K sur la Rive-Nord de Montréal." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://daynak.ca/proprietes.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:  #F5F0EA;
+      --warm:   #E8DDD0;
+      --sand:   #C89B7B;
+      --brown:  #6B4A38;
+      --dark:   #121110;
+      --white:  #FFFFFF;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--dark); background: var(--cream); overflow-x: hidden; }
+
+    /* ─── NAV ─────────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 60px;
+      background: rgba(245,240,234,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 16px; }
+    .nav-logo img { height: 34px; }
+    .nav-logo .nav-logo-remax { height: 36px; }
+    .nav-logo-remax-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+    .nav-logo-remax-label { font-family: var(--font-sans); font-size: 8px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,0.38); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-sans); font-size: 13px; font-weight: 400;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--dark); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--sand); }
+    .nav-cta {
+      background: var(--dark); color: var(--white);
+      padding: 11px 26px; border: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--sand); }
+
+    /* ─── BURGER ──────────────────────────────────────────────────── */
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-burger span { display: block; width: 24px; height: 2px; background: var(--dark); transition: transform 0.3s, opacity 0.3s; }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile-menu {
+      display: none; flex-direction: column;
+      position: fixed; top: 73px; left: 0; width: 100%;
+      background: rgba(245,240,234,0.98); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      z-index: 99; padding: 16px 0;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      padding: 14px 28px; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dark); text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .nav-mobile-menu a.mobile-cta {
+      margin: 12px 28px 4px; padding: 14px 28px;
+      background: var(--dark); color: var(--white); text-align: center;
+    }
+
+    /* ─── HERO ────────────────────────────────────────────────────── */
+    .page-hero {
+      padding: 160px 80px 80px;
+      background: var(--dark); color: var(--white);
+      position: relative; overflow: hidden;
+    }
+    .page-hero-eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--sand); margin-bottom: 24px;
+    }
+    .page-hero-title {
+      font-family: var(--font-serif); font-size: clamp(48px, 6vw, 80px);
+      font-weight: 300; line-height: 1.05; margin-bottom: 20px;
+    }
+    .page-hero-title em { font-style: italic; color: var(--sand); }
+    .page-hero-meta {
+      font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 32px;
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    }
+    .page-hero-dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--sand); display: inline-block; margin-right: 8px;
+    }
+
+    /* ─── PROPERTIES GRID ─────────────────────────────────────────── */
+    .props-section {
+      padding: 80px 80px 120px;
+      background: var(--cream);
+    }
+    .props-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2px;
+    }
+    .props-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 100px 40px;
+      font-size: 16px; color: #888;
+    }
+    .props-empty p { margin-bottom: 8px; }
+    .btn-sand {
+      display: inline-block;
+      background: var(--sand); color: var(--white);
+      padding: 14px 32px; margin-top: 28px;
+      font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-sand:hover { background: var(--brown); }
+
+    /* ─── REVEAL ──────────────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── FOOTER ──────────────────────────────────────────────────── */
+    footer { background: var(--dark); color: rgba(255,255,255,0.5); }
+    .footer-main {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 32px;
+      padding: 48px 80px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-main img { height: 36px; opacity: 0.7; }
+    .footer-compliance { font-size: 12px; line-height: 1.9; }
+    .footer-broker-name { font-weight: 500; color: rgba(255,255,255,0.75); }
+    .footer-compliance a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-links { display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { font-size: 11px; letter-spacing: 0.06em; color: rgba(255,255,255,0.35); text-decoration: none; }
+    .footer-links a:hover { color: var(--sand); }
+    .footer-credit {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      padding: 20px 80px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .footer-credit .vp-logo { height: 18px; opacity: 0.45; filter: invert(1); }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 14px 20px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-burger { display: flex; }
+      .page-hero { padding: 120px 28px 60px; }
+      .props-section { padding: 48px 12px 80px; }
+      .props-grid { grid-template-columns: 1fr; gap: 2px; }
+      .footer-main { padding: 40px 28px; flex-direction: column; }
+      .footer-credit { padding: 20px 28px; }
+    }
+    @media (min-width: 901px) and (max-width: 1200px) {
+      .props-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="https://static.wixstatic.com/media/623234_38d0a1ad40e8470493cc650fc46c9361~mv2.png" alt="Dayna K Logo" /></a>
+    <div class="nav-logo-remax-wrap">
+      <img src="https://static.wixstatic.com/media/623234_6395502c46a0448ea97d9111de1e7f3b~mv2.png" alt="RE/MAX Crystal" class="nav-logo-remax" />
+      <span class="nav-logo-remax-label">Agence immobilière</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#approche">Approche</a></li>
+    <li><a href="index.html#secteurs">Secteurs</a></li>
+    <li><a href="proprietes.html" class="active">Propriétés</a></li>
+    <li><a href="index.html#temoignages">Témoignages</a></li>
+    <li><a href="index.html#calculatrice">Calculatrice</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Me contacter</a>
+  <button class="nav-burger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="index.html#services"     onclick="closeMenu()">Services</a>
+  <a href="index.html#approche"     onclick="closeMenu()">Approche</a>
+  <a href="index.html#secteurs"     onclick="closeMenu()">Secteurs</a>
+  <a href="proprietes.html"         onclick="closeMenu()">Propriétés</a>
+  <a href="index.html#temoignages"  onclick="closeMenu()">Témoignages</a>
+  <a href="index.html#calculatrice" onclick="closeMenu()">Calculatrice</a>
+  <a href="index.html#contact" class="mobile-cta" onclick="closeMenu()">Me contacter</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <p class="page-hero-eyebrow">RE/MAX Crystal · Rive-Nord de Montréal</p>
+  <h1 class="page-hero-title">
+    Mes<br>
+    <em>propriétés.</em>
+  </h1>
+  <div class="page-hero-meta">
+    <span><span class="page-hero-dot"></span> En cours de chargement…</span>
+  </div>
+</section>
+
+<!-- GRILLE DE PROPRIÉTÉS -->
+<section class="props-section">
+  <div class="props-grid">
+    <div class="props-empty reveal">
+      <p>Les propriétés seront affichées ici dès la première mise à jour automatique.</p>
+      <p style="margin-top:8px; font-size:14px;">En attendant, consultez la liste complète sur RE/MAX Québec.</p>
+      <a href="https://www.remax-quebec.com/fr/courtiers-immobiliers/dayna.k" target="_blank" rel="noopener noreferrer" class="btn-sand">
+        Voir sur RE/MAX &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <img src="https://static.wixstatic.com/media/623234_b20c3057e55146778c8ca566ddf2f52f~mv2.png" alt="Dayna K Logo Blanc" />
+    <div class="footer-compliance">
+      <p class="footer-broker-name">Dayna Kapogiannatos, courtier immobilier résidentiel</p>
+      <p>RE/MAX Crystal, Agence immobilière</p>
+      <p>228 boul. Labelle, Ste-Thérèse, Qc&nbsp; J7E 2X7</p>
+      <p style="margin-top:4px;">
+        <a href="tel:+14388827384">(438) 882-7384</a>
+        &nbsp;·&nbsp;
+        <a href="mailto:dayna.k@remax-quebec.com">dayna.k@remax-quebec.com</a>
+      </p>
+      <p style="margin-top:10px;">© 2026 Dayna Kapogiannatos · RE/MAX Crystal · Tous droits réservés</p>
+    </div>
+    <div class="footer-links">
+      <a href="#">Politique de confidentialité</a>
+      <a href="#">Conditions d'utilisation</a>
+    </div>
+  </div>
+  <div class="footer-credit">
+    <span>Stratégie web</span>
+    <a href="https://www.vpourdesign.com" target="_blank" rel="noopener noreferrer"><img class="vp-logo" src="logo-vpourdesign.png" alt="vpourdesign" /></a>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  function toggleMenu() {
+    document.getElementById('navMobileMenu').classList.toggle('open');
+    document.querySelector('.nav-burger').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('navMobileMenu').classList.remove('open');
+    document.querySelector('.nav-burger').classList.remove('open');
+  }
+  document.addEventListener('click', function(e) {
+    const menu   = document.getElementById('navMobileMenu');
+    const burger = document.querySelector('.nav-burger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) {
+      menu.classList.remove('open');
+      burger.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
